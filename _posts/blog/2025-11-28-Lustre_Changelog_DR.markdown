@@ -69,6 +69,20 @@ main:       ""
 
 ![Alt text](/assets/changelog.png)
 
+**Changelog 동작 흐름:**
+
+1. **Changelog 등록**: 러스터 관리자가 MDT에 `changelog_register`를 통해 Changelog를 등록합니다. 이 과정을 통해 해당 MDT에서 발생하는 메타데이터 변경 이벤트를 기록할 수 있도록 설정합니다.
+
+2. **클라이언트 I/O 발생**: 클라이언트가 파일 생성, 수정, 삭제 등의 I/O 작업을 러스터 파일시스템에 요청합니다.
+
+3. **Changelog 저장**: MDS(Metadata Server)가 클라이언트의 I/O 작업을 확인하고 처리한 후, 해당 이벤트를 Changelog로 MDT에 저장합니다. 각 이벤트는 타임스탬프, FID, 이벤트 타입 등의 정보와 함께 순차적으로 기록됩니다.
+
+4. **Changelog 읽기 요청**: Changelog Reader(`lfs changelog` 명령어 또는 `llapi_changelog_recv()` API)가 Changelog 내용을 확인하기 위해 읽기 요청을 보냅니다.
+
+5. **Changelog 조회**: MDS가 MDT에서 Changelog를 가져와 읽기 요청에 대응할 데이터를 준비합니다.
+
+6. **Changelog 전달**: MDS가 조회한 Changelog 내용을 Changelog Reader에게 전달합니다. Reader는 이 정보를 활용하여 파일시스템 변경 이벤트를 실시간으로 추적하고 처리할 수 있습니다.
+
 
 ### Changelog의 동작 원리
 
@@ -89,14 +103,17 @@ main:       ""
   Changelog 기능을 사용하려면 먼저 MDS에서 Changelog를 활성화해야 합니다. Changelog는 기본적으로 비활성화되어 있으며, 다음과 같이 활성화할 수 있습니다:
 
 ```shell
-# Changelog 활성화
+# 1. Changelog 등록 (changelog_register)
+lctl changelog_register <MDT_device>
+
+# 2. Changelog 활성화 및 이벤트 타입 설정
 lctl set_param mdd.*.changelog_mask="CREAT UNLINK RENAME SETATTR"
 
 # Changelog 상태 확인
 lctl get_param mdd.*.changelog_mask
 ```
 
-  `changelog_mask` 파라미터를 통해 기록할 이벤트 타입을 선택적으로 지정할 수 있습니다. 필요한 이벤트만 기록하도록 설정하면 디스크 사용량을 절약할 수 있습니다.
+  먼저 `changelog_register`를 통해 MDT에 Changelog를 등록한 후, `changelog_mask` 파라미터를 통해 기록할 이벤트 타입을 선택적으로 지정할 수 있습니다. 필요한 이벤트만 기록하도록 설정하면 디스크 사용량을 절약할 수 있습니다.
 
 
 #### changelog_mask 이벤트 타입
