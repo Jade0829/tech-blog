@@ -54,7 +54,7 @@ main:       "/assets/changelog_main.png"
 
   Lustre Changelog는 Lustre 파일시스템에서 발생하는 모든 메타데이터 변경 사항을 기록하는 기능입니다. 파일 생성, 수정, 삭제, 권한 변경, 디렉토리 구조 변경 등과 같은 이벤트들이 시간 순서대로 기록되며, 이를 통해 파일시스템의 변경 이력을 추적할 수 있습니다.
 
-![Alt text](/assets/changelog.png)
+![Alt text](/assets/changelog_2.png)
 
 **Changelog 동작 흐름:**
 
@@ -385,7 +385,7 @@ Redis
 │                                                             │
 │  Entry ID: 1234567890126-0                                  │
 │  ┌─────────────────────────────────────────────────────┐    │
-│  │ Field      │ Value                                  │    │
+│  │ Field      │ Value                                  │    
 │  ├─────────────────────────────────────────────────────┤    │
 │  │ event      │ "DELETE"                               │    │
 │  │ path       │ "/lustre/file.txt"                     │    │
