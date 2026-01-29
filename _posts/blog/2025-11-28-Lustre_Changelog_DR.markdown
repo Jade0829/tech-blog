@@ -62,7 +62,7 @@ main:       "/assets/changelog_main.png"
 
 - **타임스탬프**: 이벤트 발생 시간
 - **FID**: 변경된 파일 또는 디렉토리의 FID
-- **이벤트 타입**: CREAT, UNLINK, RENAME, SETATTR 등의 작업 유형
+- **이벤트 타입**: CREAT, UNLINK, RENME, SETATTR 등의 작업 유형
 - **부가 정보**: 작업과 관련된 추가 메타데이터
 
 Changelog는 비동기적으로 기록되기 때문에 일반적인 파일시스템 작업 성능에는 거의 영향을 주지 않습니다. 다만, 활성화된 이벤트 타입이 많을수록 디스크 사용량이 증가할 수 있으므로, 실제로 필요한 이벤트만 선택적으로 활성화하는 것이 좋습니다.
@@ -77,7 +77,7 @@ Changelog는 비동기적으로 기록되기 때문에 일반적인 파일시스
 lctl changelog_register <MDT_device>
 
 # 2. Changelog 활성화 및 이벤트 타입 설정
-lctl set_param mdd.*.changelog_mask="CREAT UNLINK RENAME SETATTR"
+lctl set_param mdd.*.changelog_mask="CREAT UNLINK RENME SETATTR"
 
 # 3. Changelog 상태 확인
 lctl get_param mdd.*.changelog_mask
@@ -240,7 +240,7 @@ lfs changelog <MDT_device> --follow
 Lustre에서 수집되는 이벤트 타입은 내부적으로 **두 개의 그룹**으로 분류하여 처리합니다.
 
 - **rename_delete**
-  - `RMDIR`, `RENAME`, `UNLINK`
+  - `RMDIR`, `RENME`, `UNLINK`
 
 - **create_modify**
   - `CREAT`, `MKDIR`, `CLOSE`, `TRUNC`, `SATTR`, `MTIME`
@@ -300,9 +300,9 @@ Lustre에서 수집되는 이벤트 타입은 내부적으로 **두 개의 그�
 **전체 구조 요약**
 
 
-• event: 이벤트 타입 (CREATE, MODIFY, RENAME, DELETE, RMDIR)
-• path: 파일/디렉토리 절대 경로 (RENAME 시 원본 경로)
-• to_path: RENAME 이벤트 시 변경될 경로
+• event: 이벤트 타입 (CREATE, MODIFY, RENME, DELETE, RMDIR)
+• path: 파일/디렉토리 절대 경로 (RENME 시 원본 경로)
+• to_path: RENME 이벤트 시 변경될 경로
 • mdt: MDT 이름
 • index: Lustre Changelog index
 
