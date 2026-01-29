@@ -184,7 +184,7 @@ lfs changelog <MDT_device> --follow
 
 - **이벤트 큐**: Redis Stream[^4]을 사용하여 이벤트를 비동기적으로 전달합니다.
 
-- **원격 통신**: gRPC[^5]를 사용하여 타겟 서버와 통신합니다. gRPC는 HTTP/2 기반의 고성능 RPC 프레임워크로, 타입 안전성과 효율적인 직렬화를 제공합니다. 파일 메타데이터 작업에 최적화되어 있습니다.
+- **원격 통신**: gRPC[^5]를 사용하여 타겟 서버와 통신합니다. gRPC는 google이 개발한 HTTP/2 기반의 고성능 RPC(Remote Procedure Call) 프레임워크로, 타입 안전성과 효율적인 직렬화를 제공합니다. 파일 메타데이터 작업에 최적화되어 있습니다.
 
 - **파일 동기화**: SSH 기반 rsync를 사용하여 안전하고 효율적으로 파일을 전송합니다. rsync는 증분 동기화에 최적화된 도구로, 변경된 부분만 전송하여 네트워크 대역폭을 절약합니다. SSH를 통해 암호화된 안전한 전송을 보장합니다.
 
@@ -545,7 +545,7 @@ Redis
 ### DR 솔루션 등급 기준 및 시장 요구사항
 
 아래 표는 시장에서 일반적으로 요구되는 **재해 복구(DR) 솔루션의 등급 기준**을 정리한 것입니다.  
-본 기준은 RPO와 RTO를 포함한 복구 목표 수준에 따라 업무 중요도를 구분하며,  
+본 기준은 RPO(Recovery Point Object)와 RTO(Recovery Time Object)[^6]를 포함한 복구 목표 수준에 따라 업무 중요도를 구분하며,  
 이후 글루시스 DR 솔루션의 테스트 결과를 해당 기준에 대입하여 등급을 평가합니다.
 
 | 구분 | Platinum | Gold | Silver | Bronze |
@@ -608,7 +608,7 @@ Redis
 &nbsp;
 [^4]: Redis Stream : Redis 5.0에서 도입된 데이터 구조로, 시간 순서대로 정렬된 로그 형태의 메시지 큐 - https://redis.io/docs/data-types/streams/ 
 &nbsp;
-[^5]: gRPC : Google에서 개발한 고성능 오픈소스 RPC(Remote Procedure Call) 프레임워크 - https://grpc.io/ 
+[^5]: gRPC : Google에서 개발한 고성능 오픈소스 RPC 프레임워크 - https://grpc.io/ 
 &nbsp;
 [^6]: RTO : 업무의 복구 목표 시간
 &nbsp;
