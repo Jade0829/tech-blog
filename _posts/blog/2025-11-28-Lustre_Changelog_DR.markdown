@@ -307,6 +307,7 @@ Lustre에서 수집되는 이벤트 타입은 내부적으로 **두 개의 그�
 • mdt: MDT 이름
 • index: Lustre Changelog index
 
+```
 Redis
 │
 ├── Streams (Redis Stream)
