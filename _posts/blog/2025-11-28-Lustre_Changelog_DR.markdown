@@ -342,7 +342,7 @@ Lustre에서 수집되는 이벤트 타입은 내부적으로 **두 개의 그�
 
 
 * event: 이벤트 타입 (CREATE, MODIFY, MKDIR, DELETE, RENAME )
-* path: 파일/디렉토리 절대 경로 (RENME 시 원본 경로)
+* path: 파일/디렉토리 절대 경로 (RENAME 시 원본 경로)
 * to_path: RENME 이벤트 시 변경될 경로
 * mdt: MDT 이름
 * index: Lustre Changelog index
