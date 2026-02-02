@@ -69,17 +69,17 @@ main:       "/assets/changelog_main.png"
 
 **Changelog 동작 흐름:**
 
-① **Changelog 등록**: Lustre 관리자가 `changelog_register`로 MDT(Metadata Target)에 Changelog를 등록합니다. 이 과정을 통해 해당 MDT에서 발생하는 메타데이터 변경 이벤트를 기록할 수 있습니다.
+1. **Changelog 등록**: Lustre 관리자가 `changelog_register`로 MDT(Metadata Target)에 Changelog를 등록합니다. 이 과정을 통해 해당 MDT에서 발생하는 메타데이터 변경 이벤트를 기록할 수 있습니다.
 
-② **클라이언트 I/O 발생**: 클라이언트가 파일 생성, 수정, 삭제 등의 I/O 작업을 Lustre 파일시스템에 요청합니다.
+2. **클라이언트 I/O 발생**: 클라이언트가 파일 생성, 수정, 삭제 등의 I/O 작업을 Lustre 파일시스템에 요청합니다.
 
-③ **Changelog 저장**: MDS(Metadata Server)가 클라이언트의 I/O 작업을 확인하고 처리한 후, 해당 이벤트를 Changelog로 MDT에 저장합니다. 각 이벤트는 타임스탬프, FID, 이벤트 타입 등의 정보와 함께 순차적으로 기록됩니다.
+3. **Changelog 저장**: MDS(Metadata Server)가 클라이언트의 I/O 작업을 확인하고 처리한 후, 해당 이벤트를 Changelog로 MDT에 저장합니다. 각 이벤트는 타임스탬프, FID, 이벤트 타입 등의 정보와 함께 순차적으로 기록됩니다.
 
-④ **Changelog 읽기 요청**: Changelog Reader(`lfs changelog` 명령어 또는 `llapi_changelog_recv()` API)가 Changelog 내용을 확인하기 위해 읽기 요청을 보냅니다.
+4. **Changelog 읽기 요청**: Changelog Reader(`lfs changelog` 명령어 또는 `llapi_changelog_recv()` API)가 Changelog 내용을 확인하기 위해 읽기 요청을 보냅니다.
 
-⑤ **Changelog 조회**: MDS가 MDT에서 Changelog를 가져와 읽기 요청에 대응할 데이터를 준비합니다.
+5. **Changelog 조회**: MDS가 MDT에서 Changelog를 가져와 읽기 요청에 대응할 데이터를 준비합니다.
 
-⑥ **Changelog 전달**: MDS가 조회한 Changelog 내용을 Changelog Reader에게 전달합니다. Reader는 이 정보를 활용하여 파일시스템 변경 이벤트를 실시간으로 추적하고 처리할 수 있습니다.
+6. **Changelog 전달**: MDS가 조회한 Changelog 내용을 Changelog Reader에게 전달합니다. Reader는 이 정보를 활용하여 파일시스템 변경 이벤트를 실시간으로 추적하고 처리할 수 있습니다.
 
 
 ### Changelog의 동작 원리
