@@ -33,7 +33,6 @@ main:       "/assets/changelog_main.png"
   - [글루시스 DR 솔루션 테스트 결과](#글루시스-dr-솔루션-테스트-결과)
   - [테스트 결과 기반 RPO / RTO 평가](#테스트-결과-기반-rpo--rto-평가)
 - [마치며](#마치며)
-- [각주](#각주)
 
 &nbsp;
 
@@ -649,7 +648,8 @@ RTO는 기업의 시스템 구성과 운영 환경에 따라 차이가 있을 �
 
 &nbsp;
 
-## 각주
+**각주**
+
 [^1]: RPO : 재해 복구에서 허용 가능한 최대 데이터 손실 시간 
 &nbsp;
 [^2]: Changelog : https://doc.lustre.org/lustre_manual.xhtml#lustre_changelogs
