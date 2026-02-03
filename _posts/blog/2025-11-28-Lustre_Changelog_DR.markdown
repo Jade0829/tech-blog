@@ -4,7 +4,7 @@ title:      "Lustre Changelog DR"
 date:       2025-11-28
 author:     김 재환 (jhkim@gluesys.com)
 categories: blog
-tags:       [Lustre, Changelog, DR, rsync, sync, 재해 복구, Redis, gRPC, RPO, RTO]
+tags:       [Lustre, Changelog, DR, rsync, sync, 재해 복구, Redis, gRPC, RPO, RTO, AI Storage]
 cover:      "/assets/changelog_main.png"
 main:       "/assets/changelog_main.png"
 ---
