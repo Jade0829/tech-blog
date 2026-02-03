@@ -650,9 +650,9 @@ RTO는 기업의 시스템 구성과 운영 환경에 따라 차이가 있을 �
 
 **각주**
 
-[^1]: RPO : 재해 복구에서 허용 가능한 최대 데이터 손실 시간 
-[^2]: Changelog : https://doc.lustre.org/lustre_manual.xhtml#lustre_changelogs
-[^3]: rsync : Unix/Linux 시스템에서 파일과 디렉토리를 효율적으로 동기화하는 유틸리티 - https://rsync.samba.org/
-[^4]: Redis Stream : Redis 5.0에서 도입된 데이터 구조로, 시간 순서대로 정렬된 로그 형태의 메시지 큐 - https://redis.io/docs/data-types/streams/ 
-[^5]: gRPC : Google에서 개발한 고성능 오픈소스 RPC 프레임워크 - https://grpc.io/ 
-[^6]: RTO : 업무의 복구 목표 시간
+[^1]: RPO : 재해 복구에서 허용 가능한 최대 데이터 손실 시간   
+[^2]: Changelog : https://doc.lustre.org/lustre_manual.xhtml#lustre_changelogs  
+[^3]: rsync : Unix/Linux 시스템에서 파일과 디렉토리를 효율적으로 동기화하는 유틸리티 - https://rsync.samba.org/  
+[^4]: Redis Stream : Redis 5.0에서 도입된 데이터 구조로, 시간 순서대로 정렬된 로그 형태의 메시지 큐 - https://redis.io/docs/data-types/streams/  
+[^5]: gRPC : Google에서 개발한 고성능 오픈소스 RPC 프레임워크 - https://grpc.io/  
+[^6]: RTO : 업무의 복구 목표 시간  
